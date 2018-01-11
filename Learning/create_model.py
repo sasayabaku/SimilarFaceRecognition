@@ -1,4 +1,4 @@
-#coding:utf-8
+# coding:utf-8
 
 from keras.models import Sequential
 from keras.layers.convolutional import Conv2D
@@ -54,8 +54,6 @@ def loading_image():
     return data_array, label_array
 
 
-
-
 def learning_star(data, label):
 
     X_train, X_test, y_train, y_test = train_test_split(data, label, test_size=0.2, random_state=29)
@@ -90,7 +88,7 @@ def learning_star(data, label):
 
     model.add(Dense(nb_classes, activation='softmax'))
 
-    adam = Adam(lr=2e-4)
+    adam = Adam(lr=1e-4)
 
     model.compile(optimizer=adam, loss='categorical_crossentropy', metrics=["accuracy"])
 
@@ -100,13 +98,27 @@ def learning_star(data, label):
     tb_cb = keras.callbacks.TensorBoard('./logs/', histogram_freq=1)
     cbks = [tb_cb]
 
-
     """
     Display Model Summary
     """
     plot_model(model, to_file='./model.png')
 
-    history = model.fit(X_train, y_train, batch_size=batch_size, nb_epoch=nb_epoch, verbose=1, validation_split=0.1, callbacks=cbks)
+    history = model.fit(X_train, y_train, batch_size=batch_size, epochs=nb_epoch, verbose=1, validation_split=0.1, callbacks=cbks)
+    score = model.evaluate(X_test, y_test, verbose=0)
+    print('Test Score:', score[0])
+    print('Test accuracy:', score[1])
+
+    """
+    Save Model
+    """
+    print('save the architechture of the model')
+    json_string = model.to_json()
+    open(os.path.join('./', 'cnn_model.json'), 'w').write(json_string)
+    yaml_string = model.to_yaml()
+    open(os.path.join('./', 'cnn_model.yaml'), 'w').write(yaml_string)
+
+    print('save the weights')
+    model.save_weights(os.path.join('./', 'cnn_model_weight.hdf5'))
 
     """
     Plot Learning log
@@ -118,6 +130,4 @@ def learning_star(data, label):
 
 if __name__ == '__main__':
     data, label = loading_image()
-    print(data.shape)
-    print(label.shape)
-    print(label[0])
+    learning_star(data, label)
