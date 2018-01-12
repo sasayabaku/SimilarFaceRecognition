@@ -5,7 +5,7 @@ config:
   config:
     activation: linear
     activity_regularizer: null
-    batch_input_shape: !!python/tuple [null, 300, 300, 3]
+    batch_input_shape: !!python/tuple [null, 100, 100, 3]
     bias_constraint: null
     bias_initializer:
       class_name: Zeros
@@ -117,7 +117,7 @@ config:
 - class_name: Activation
   config: {activation: relu, name: activation_4, trainable: true}
 - class_name: Dropout
-  config: {name: dropout_1, rate: 1.0, trainable: true}
+  config: {name: dropout_1, noise_shape: null, rate: 1.0, seed: null, trainable: true}
 - class_name: Dense
   config:
     activation: softmax
@@ -134,6 +134,6 @@ config:
     kernel_regularizer: null
     name: dense_2
     trainable: true
-    units: 2
+    units: 20
     use_bias: true
-keras_version: 2.0.8
+keras_version: 2.1.2

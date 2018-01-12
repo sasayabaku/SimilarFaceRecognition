@@ -19,10 +19,18 @@ import cv2
 import numpy as np
 from sklearn.model_selection import train_test_split
 
-img_row, img_cols = 300, 300
+"""
+Setting Parameter
+img_row, img_cols: Neural Networkに入れる際の画像サイズ
+img_channels: RGB画像なのでチャネル数が3
+nb_classes: 芸能人のクラスラベル
+nb_epoch: エポック数
+"""
+
+img_row, img_cols = 100, 100
 img_channels = 3
-nb_classes = 2
-nb_epoch = 3
+nb_classes = 20
+nb_epoch = 30
 
 batch_size = 128
 
@@ -49,7 +57,7 @@ def loading_image():
                 train_label = np_utils.to_categorical(classnum, nb_classes)
 
                 data_array = np.append(data_array, train_data, axis=0)
-                label_array = np.append(label_array, train_label, axis=0)
+                label_array = np.append(label_array, [train_label], axis=0)
 
     return data_array, label_array
 
@@ -123,9 +131,9 @@ def learning_star(data, label):
     """
     Plot Learning log
     """
-    TensorBoard(log_dir='./logs')
+    # TensorBoard(log_dir='./logs')
 
-    KTF.set_session(old_session)
+    # KTF.set_session(old_session)
 
 
 if __name__ == '__main__':
