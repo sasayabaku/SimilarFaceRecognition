@@ -7,7 +7,7 @@ from keras.optimizers import Adam
 
 from keras.layers.core import Dense, Activation, Dropout, Flatten
 from keras.utils import plot_model
-from keras.callbacks import TensorBoard
+from keras.callbacks import EarlyStopping
 from keras.utils import np_utils
 
 import keras.callbacks
@@ -15,6 +15,7 @@ import keras.backend.tensorflow_backend as KTF
 import tensorflow as tf
 
 import os
+
 import cv2
 import numpy as np
 from sklearn.model_selection import train_test_split
@@ -30,7 +31,7 @@ nb_epoch: エポック数
 img_row, img_cols = 100, 100
 img_channels = 3
 nb_classes = 20
-nb_epoch = 30
+nb_epoch = 100
 
 batch_size = 128
 
@@ -101,16 +102,21 @@ def learning_star(data, label):
     model.compile(optimizer=adam, loss='categorical_crossentropy', metrics=["accuracy"])
 
     """
-    Add Tensorboard
+    Add callbacks (TensorBoard, EarlyStopping)
     """
     tb_cb = keras.callbacks.TensorBoard('./logs/', histogram_freq=1)
-    cbks = [tb_cb]
+    early_stopping = EarlyStopping(monitor='val_loss', mode='min', patience=20)
+    cbks = [tb_cb, early_stopping]
 
     """
     Display Model Summary
     """
     plot_model(model, to_file='./model.png')
 
+
+    """
+    Learning Flow
+    """
     history = model.fit(X_train, y_train, batch_size=batch_size, epochs=nb_epoch, verbose=1, validation_split=0.1, callbacks=cbks)
     score = model.evaluate(X_test, y_test, verbose=0)
     print('Test Score:', score[0])
