@@ -134,6 +134,6 @@ config:
     kernel_regularizer: null
     name: dense_2
     trainable: true
-    units: 20
+    units: 56
     use_bias: true
 keras_version: 2.1.2
