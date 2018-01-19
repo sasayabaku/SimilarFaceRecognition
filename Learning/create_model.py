@@ -30,7 +30,7 @@ nb_epoch: エポック数
 
 img_row, img_cols = 100, 100
 img_channels = 3
-nb_classes = 20
+nb_classes = 56
 nb_epoch = 100
 
 batch_size = 128
