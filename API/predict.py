@@ -9,8 +9,11 @@ import flask
 from Learning.predict_face import face_predict, face_extract
 
 import cv2
+import pandas as pd
 
 app = flask.Flask(__name__)
+
+stars = pd.read_csv("./list.csv", header=None)
 
 @app.route("/predict")
 def predict():
@@ -28,10 +31,18 @@ def predict():
 
     label, proba, top_3, top_3_proba = face_predict(face)
 
+    name_list = []
+
+    for i in top_3:
+        name = stars.loc[i][1]
+        name_list.append(name)
+
     return flask.jsonify({
         "label": top_3,
-        "probability": top_3_proba
+        "probability": top_3_proba,
+        "name": name_list
     })
+
 
 if __name__ == "__main__":
     app.run(host="172.21.39.128", port=5000 ,debug=True)
