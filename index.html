@@ -1,0 +1,34 @@
+<html>
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="Cache-Control" content="no-cache">
+  <title>Yoshida Lab</title>
+  <link rel="stylesheet" type="text/css" href="index.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
+  <script type='text/javascript' src="js/jquery-3.1.1.min.js"></script>
+  <script type='text/javascript' src="js/jquery.particleground.js"></script>
+</head>
+
+<body>
+<div id="particles">
+  <div id="intro">
+    <h1>Yoshida Laboratory</h1>
+    <p>Face Recognision System using Neural Network</p>
+    <div class="start" onClick="analysis()">Analyze</div><a href="./camera.html"><div class="start">Camera</div></a>
+  </div>
+</div>
+
+<!-- 解析結果表示 -->
+<div id="iterate">
+  <div id="result_list">
+    <div class="ranking"> <span id="one">1st</span> <span id="one_img"></span> <span id="one_name"></span><span id="one_sim"></span></div>
+    <div class="ranking"> <span id="two">2nd</span><span id="two_img"></span><span id="two_name"></span><span id="two_sim"></span></div>
+    <div class="ranking"> <span id="three">3rd</span> <span id="three_img"></span> <span id="three_name"></span><span id="three_sim"></span></div>
+  </div>
+</div>
+<script type='text/javascript' src="./js/index.js"></script>
+
+
+</body>
+</html>

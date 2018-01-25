@@ -1,0 +1,61 @@
+<html>
+<head>
+  <title>camera</title>
+  <meta http-equiv="Cache-Control" content="no-cache">
+  <link rel="stylesheet" href="camera.css" />
+</head>
+
+
+<body>
+
+  <div id="camera"></div>
+  <span id="result"></span>
+  <span></span>
+  <br><button id="start" class="button" onclick="take_snapshot()">start</button>
+
+<div style="margin-top:10px;">
+  <form name="input_form" action="estimate.php" method="post" onsubmit="get_js_img()">
+    <input type="submit" value="Send Server" class="button"/>
+    <input type="hidden" name="hidden_input" value="" />
+  </form>
+</div>
+
+
+
+</body>
+
+<script>
+  function get_js_img(){
+    document.forms['input_form'].elements['hidden_input'].value = img.src;
+  }
+</script>
+
+
+<script type="text/javascript" src="./js/webcamjs/webcam.min.js"></script>
+
+
+<script>
+  Webcam.set({
+    widht: 640,
+    height: 480,
+    image_format: 'jpeg',
+    jpeg_quality: 90
+  });
+  Webcam.attach('#camera');
+</script>
+
+
+<script>
+  function take_snapshot(){
+    Webcam.snap( function(data_uri) {
+      document.getElementById('result').innerHTML =
+      '<img src="'+data_uri+'" id="img"/>';
+    });
+  }
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+
+</html>
