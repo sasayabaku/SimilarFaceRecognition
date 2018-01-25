@@ -6,14 +6,18 @@ import sys
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir)))
 
 import flask
+from flask_cors import CORS, cross_origin
 from Learning.predict_face import face_predict, face_extract
 
 import cv2
 import pandas as pd
 
 app = flask.Flask(__name__)
+CORS(app)
 
-stars = pd.read_csv("./list.csv", header=None)
+Host_name = "172.21.39.178"
+
+stars = pd.read_csv("list.csv", header=None)
 
 @app.route("/predict")
 def predict():
@@ -43,6 +47,5 @@ def predict():
         "name": name_list
     })
 
-
 if __name__ == "__main__":
-    app.run(host="172.21.39.128", port=5000 ,debug=True)
+    app.run(host=Host_name, port=5000 ,debug=True)
