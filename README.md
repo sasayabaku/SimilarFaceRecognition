@@ -23,6 +23,9 @@ Learning
 ┝ cnn_model.yaml            CNNモデルの構造を記述したYAML
 ┗ cnn_model_weight.hdf5     CNNモデルの重みを保存したファイル
 ```
+Download Here  
+[cnn_model_weight.hdf5](https://drive.google.com/drive/u/4/folders/1LWio_7CvH7kBqacknAIZx_ZfEnqMfss4)
+
 ## Required Settings
 ### Setting HostName
 
