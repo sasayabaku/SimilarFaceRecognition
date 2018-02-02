@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Analyze</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./js/fakeLoader/fakeLoader.css" />
+    <link rel="stylesheet" href="./analyze.css" />
+  </head>
+  <body>
+
+    <div id="Loading"></div>
+
+    <div id="result">
+
+      <div class="container">
+
+        <div class="row">
+          <div class="col-sm-3 title_content">
+            <p id="title">Analyze Result</p>
+          </div>
+          <div class="col-sm-3 content1">
+            <p class="content_title">推定年齢</p>
+            <p class="shuffle" id="estimate_age"></p>
+          </div>
+          <div class="col-sm-3 content2" id="age">
+            <p class="content_title">性別</p>
+            <canvas id="doughnutChart" height="200px" width="300px"></canvas>
+          </div>
+          <div class="col-sm-3 content1">Near</div>
+          <div class="col-sm-3 content2">Monster</div>
+
+          <div class="col-sm-3 content1">Test</div>
+          <div class="col-sm-3 content2">Live</div>
+          <div class="col-sm-3 content1">Monster</div>
+          <div class="col-sm-3 content2">Near</div>
+          <div class="col-sm-3 content1">Monster</div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <!-- Include Chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+    <!-- Include FakeLoader -->
+    <script src="./js/fakeLoader/fakeLoader.min.js"></script>
+
+    <script src="./js/analyze.js"></script>
+
+  </body>
+</html>
