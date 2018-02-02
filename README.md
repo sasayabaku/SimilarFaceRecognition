@@ -19,9 +19,13 @@ list.csv
 
 ```bash
 Learning
+┝ /age_gender
+    ┝ age_gender_model.hdf5   年齢, 性別の推定器の重み
+    ┝ age_gender_model.json   年齢，性別の推定器の構造
 ┝ cnn_model.json            CNNモデルの構造を記述したJSON
 ┝ cnn_model.yaml            CNNモデルの構造を記述したYAML
 ┗ cnn_model_weight.hdf5     CNNモデルの重みを保存したファイル
+
 ```
 ## Required Settings
 ### Setting HostName
