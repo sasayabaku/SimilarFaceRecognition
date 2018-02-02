@@ -1,6 +1,8 @@
 # SimilarFaceRecognition
 Similar Face Recognition System
 
+Warning: This Application works only FireFox (now).
+
 ## Necessary File
 ```bash
 API
@@ -26,6 +28,18 @@ Learning
 ┝ cnn_model.yaml            CNNモデルの構造を記述したYAML
 ┗ cnn_model_weight.hdf5     CNNモデルの重みを保存したファイル
 
+```
+
+```bash
+js
+┠ analyze.js
+┠ index.js
+┠ jquery-versions.min.js
+┠ jquery.particleground.js
+┠ jquery.particleground.min.js
+┠ progressbar.js
+┠ /fakeLoader
+└ /webcamjs
 ```
 ## Required Settings
 ### Setting HostName
