@@ -9,7 +9,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardi
 
 import flask
 from flask_cors import CORS, cross_origin
-from Learning.predict_face import face_predict, face_extract
+from Learning.predict_face import face_predict, face_extract, age_gender_predict
 
 import cv2
 import pandas as pd
@@ -53,7 +53,7 @@ def predict():
 
 
 @app.route("/age_gender_predict")
-def age_gender_predict():
+def age_gender_api():
 
     """
     API that returns predicted age and gender from facial image
@@ -64,9 +64,11 @@ def age_gender_predict():
     face = cv2.imread(face_file)
     gender, age = age_gender_predict(face)
 
+
     return flask.jsonify({
-        "gender": gender,
-        "age": age
+        "women": gender[0][0],
+        "men": gender[0][1],
+        "age": age[0]
     })
 
 

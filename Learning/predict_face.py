@@ -93,10 +93,12 @@ def age_gender_predict(img):
     model.load_weights('../Learning/age_gender/age_gender_model.hdf5')
 
     label = model.predict(target)
-    predicted_genders = label[0]
+    not_round_genders = label[0].astype('float')
+    predicted_genders = pd.DataFrame([not_round_genders[0]]).round(4).values
 
     ages = np.arange(0, 101).reshape(101, 1)
-    predicted_ages = label[1].dot(ages).flatten()
+    not_round_ages = label[1].dot(ages).flatten().astype('float')
+    predicted_ages = pd.DataFrame(not_round_ages).round(1).values[0]
 
     return predicted_genders, predicted_ages
 
