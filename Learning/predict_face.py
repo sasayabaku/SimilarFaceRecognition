@@ -29,6 +29,7 @@ def face_extract(img):
 
         cv2.imwrite("./face.jpg", face)
 
+
 def face_predict(img):
 
     """
@@ -70,5 +71,42 @@ def face_predict(img):
     return label, proba, top_k_indexes, top_k_proba
 
 
+def age_gender_predict(img):
+
+    """
+
+    Predict Age & Gender
+    [Warning]:  This use model_json file and model_weights.hdf5 file in age-gender-estimation.
+                This learning color image. So that this functions img does not normalization.
+
+    :param img: subject face image
+    :return:    predicted genders
+                predicted age
+    """
+
+    img = cv2.resize(img, (64, 64))
+    target = np.reshape(img, (1, img.shape[0], img.shape[1], img.shape[2])).astype('float')
+
+    json_string = open('../Learning/age_gender/age_gender_model.json').read()
+    model = model_from_json(json_string)
+
+    model.load_weights('../Learning/age_gender/age_gender_model.hdf5')
+
+    label = model.predict(target)
+    not_round_genders = label[0].astype('float')
+    predicted_genders = pd.DataFrame([not_round_genders[0]]).round(4).values
+
+    ages = np.arange(0, 101).reshape(101, 1)
+    not_round_ages = label[1].dot(ages).flatten().astype('float')
+    predicted_ages = pd.DataFrame(not_round_ages).round(1).values[0]
+
+    return predicted_genders, predicted_ages
+
+
 if __name__ == '__main__':
     print("Please Exec Test Code")
+
+    img = cv2.imread('../Learning/facedata/31/3.jpg')
+    gender, age = age_gender_predict(img)
+    print(gender)
+    print(age)

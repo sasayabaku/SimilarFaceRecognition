@@ -1,6 +1,8 @@
 # SimilarFaceRecognition
 Similar Face Recognition System
 
+Warning: This Application works only FireFox (now).
+
 ## Necessary File
 ```bash
 API
@@ -19,9 +21,25 @@ list.csv
 
 ```bash
 Learning
+┝ /age_gender
+    ┝ age_gender_model.hdf5   年齢, 性別の推定器の重み
+    ┝ age_gender_model.json   年齢，性別の推定器の構造
 ┝ cnn_model.json            CNNモデルの構造を記述したJSON
 ┝ cnn_model.yaml            CNNモデルの構造を記述したYAML
 ┗ cnn_model_weight.hdf5     CNNモデルの重みを保存したファイル
+
+```
+
+```bash
+js
+┠ analyze.js
+┠ index.js
+┠ jquery-versions.min.js
+┠ jquery.particleground.js
+┠ jquery.particleground.min.js
+┠ progressbar.js
+┠ /fakeLoader
+└ /webcamjs
 ```
 Download Here  
 [cnn_model_weight.hdf5](https://drive.google.com/drive/u/4/folders/1LWio_7CvH7kBqacknAIZx_ZfEnqMfss4)
