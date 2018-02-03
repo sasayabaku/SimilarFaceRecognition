@@ -58,18 +58,20 @@ function analysis(){
   step.from('#one_name', 0.6, {autoAlpha:0});
   step.from('#one_sim', 0.6, {autoAlpha:0});
 
+  step.from('#analyze_link', 0.8, {autoAlpha:0});
+
 }
 
 
 function insert(list, name, probability){
   $('#one_img').html("<img src=\"./img/" + list[0] + ".jpg\" height=\'150px\'>");
-  $('#one_sim').text(probability[0] + ' %');
+  $('#one_sim').text(probability[0] * 100 + ' %');
   $('#one_name').text(name[0]);
   $('#two_img').html("<img src=\"./img/" + list[1] + ".jpg\" height=\'150px\'>");
-  $('#two_sim').text(probability[1] + ' %');
+  $('#two_sim').text(probability[1] * 100 + ' %');
   $('#two_name').text(name[1]);
   $('#three_img').html("<img src=\"./img/" + list[2] + ".jpg\" height=\'150px\'>");
-  $('#three_sim').text(probability[2] + ' %');
+  $('#three_sim').text(probability[2] * 100 + ' %');
   $('#three_name').text(name[2]);
 }
 
